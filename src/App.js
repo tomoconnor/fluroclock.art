@@ -1,11 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
-
+import ClockModeToggle from './components/ClockModeToggle';
 function App() {
   return (
     <div className="App">
+      <h1 className="text-3xl font-bold font-segmented">
+      Fluroclock
+    </h1>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <ClockModeToggle />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
