@@ -43,6 +43,19 @@ const letters = {
   "y": 0x3B,
 }
 
+const ConvertObjectToBits = (obj) => {
+  let bits = 0;
+  bits += parseInt(obj.g) ? 1 : 0;
+  bits += parseInt(obj.f) ? 2 : 0;
+  bits += parseInt(obj.e) ? 4 : 0;
+  bits += parseInt(obj.d) ? 8 : 0;
+  bits += parseInt(obj.c) ? 16 : 0;
+  bits += parseInt(obj.b) ? 32 : 0;
+  bits += parseInt(obj.a) ? 64 : 0;
+  return bits;
+}
+
+
 const Colon = (props) => {
   return (
     <div className={`Colon ${props.blink ? 'Colon--blink' : ''}`} />
@@ -62,18 +75,20 @@ const Display = (props) => {
     bit = numbers[props.value]
   } else if (typeof(props.value) === 'string') {
     bit = letters[props.value]
+  } else if (typeof(props.value) === 'object') {
+    bit = ConvertObjectToBits(props.value)
   }
 
   return (
     <div className="Display bg-black rounded">
       {segments.map((seg, i) => {
-        return (<Segment on={((bit >> i) & 1) == 1 ? true : false} position={seg} key={i}/>)
+        return (<Segment on={((bit >> i) & 1) === 1 ? true : false} position={seg} key={i}/>)
       })}
     </div>
   )
 }
 
-export {Display, Colon, Segment};
+export {Display, Colon, Segment, letters};
 
 
 
