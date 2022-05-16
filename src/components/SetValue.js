@@ -9,19 +9,42 @@ const SetValue = (props) => {
     const valid_numbers = ['0','1','2','3','4','5','6','7','8','9'];
     const valid_values = [...valid_numbers, ...valid_letters];
     const selector = (e) => {
-        console.log(typeof(e.target.value));
+        // console.log(typeof(e.target.value));
         // setChosen(e.target.value);
         if (valid_numbers.includes(e.target.value)) {
             props.panel(parseInt(e.target.value));
-            // call api to set digit in numeric mode
+            // TODO call api to set digit in numeric mode
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    panel_id: String(props.panelID),
+                    value: e.target.value
+                })
+            };
+            fetch('http://localhost:9000/panel/numeric', requestOptions)
+            
         } else {
             props.panel(e.target.value);
-            // call api to set digit in alpha mode
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    panel_id: String(props.panelID),
+                    alpha: e.target.value
+                })
+            };
+            fetch('http://localhost:9000/panel/alpha', requestOptions)
+            // TODO call api to set digit in alpha mode
         }
     }
     return (
         <div className="flex justify-center px-4 py-4">
-            <select name="selectList" id="selectList"  onChange={selector}>
+            <select name="selectList" id={'selectList-' + props.panelID}  onChange={selector}>
                 {valid_values.map(value => (
                     <option key={value} value={value} >{value}</option>
                 ))}
