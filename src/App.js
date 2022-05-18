@@ -15,7 +15,7 @@ const App = () => {
     // console.log(data);
     for (var i = 0; i < data.length; i++) {
       if (data[i].PanelID === "1") {
-        if(data[i].State.mode==="bcd"){
+        if(data[i].State.mode==="bcd" || data[i].State.mode==="clock"){
           setPanelA(parseInt(data[i].State.bcd_data.value));
         } else if(data[i].State.mode==="alpha"){
           setPanelA(data[i].State.alpha_data.alpha);
@@ -23,7 +23,7 @@ const App = () => {
           setPanelA(data[i].State.direct_data);
         }
       } else if (data[i].PanelID === "2") {
-        if(data[i].State.mode==="bcd"){
+        if(data[i].State.mode==="bcd" || data[i].State.mode==="clock"){
           setPanelB(parseInt(data[i].State.bcd_data.value));
         } else if(data[i].State.mode==="alpha"){
           setPanelB(data[i].State.alpha_data.alpha);
@@ -31,7 +31,7 @@ const App = () => {
           setPanelB(data[i].State.direct_data);
         }
       } else if (data[i].PanelID === "3") {
-        if(data[i].State.mode==="bcd"){
+        if(data[i].State.mode==="bcd" || data[i].State.mode==="clock"){
           setPanelC(parseInt(data[i].State.bcd_data.value));
         } else if(data[i].State.mode==="alpha"){
           setPanelC(data[i].State.alpha_data.alpha);
@@ -39,7 +39,7 @@ const App = () => {
           setPanelC(data[i].State.direct_data);
         }
       } else if (data[i].PanelID === "4") {
-        if(data[i].State.mode==="bcd"){
+        if(data[i].State.mode==="bcd" || data[i].State.mode==="clock"){
           setPanelD(parseInt(data[i].State.bcd_data.value));
         } else if(data[i].State.mode==="alpha"){
           setPanelD(data[i].State.alpha_data.alpha);
@@ -56,7 +56,7 @@ const App = () => {
         setLoading(true);
           try{
               
-              const response = await fetch ("http://localhost:9000/panel/status");
+              const response = await fetch ("http://192.168.186.12:9000/panel/status");
               const responseJson = await response.json();
               setPanelData(responseJson);
           } catch (error) {

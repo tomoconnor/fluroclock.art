@@ -13,7 +13,6 @@ const SetValue = (props) => {
         // setChosen(e.target.value);
         if (valid_numbers.includes(e.target.value)) {
             props.panel(parseInt(e.target.value));
-            // TODO call api to set digit in numeric mode
             const requestOptions = {
                 method: 'POST',
                 headers: {
@@ -24,7 +23,7 @@ const SetValue = (props) => {
                     value: e.target.value
                 })
             };
-            fetch('http://localhost:9000/panel/numeric', requestOptions)
+            fetch('http://192.168.186.12:9000/panel/numeric', requestOptions)
             
         } else {
             props.panel(e.target.value);
@@ -38,8 +37,7 @@ const SetValue = (props) => {
                     alpha: e.target.value
                 })
             };
-            fetch('http://localhost:9000/panel/alpha', requestOptions)
-            // TODO call api to set digit in alpha mode
+            fetch('http://192.168.186.12:9000/panel/alpha', requestOptions)
         }
     }
     return (
