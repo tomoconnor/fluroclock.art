@@ -8,8 +8,6 @@ const App = () => {
   const [panelB, setPanelB] = React.useState(0);
   const [panelC, setPanelC] = React.useState(0);
   const [panelD, setPanelD] = React.useState(0);
-  const [clockMode, setClockMode] = React.useState(true);
-  const [loading, setLoading] = React.useState(false);
   
   const setPanelData = (data) => {
     // console.log(data);
@@ -53,7 +51,6 @@ const App = () => {
   React.useEffect(() => {
     (async () => {
       const interval = setInterval(async () => {
-        setLoading(true);
           try{
               
               const response = await fetch ("http://192.168.186.12:9000/panel/status");
@@ -61,8 +58,6 @@ const App = () => {
               setPanelData(responseJson);
           } catch (error) {
               console.log(error);
-          } finally {
-              setLoading(false);
           }
       }, 1000);
       return () => clearInterval(interval);

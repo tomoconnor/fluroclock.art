@@ -1,11 +1,50 @@
 import React from "react";
+const APIEnableClockMode = () => {
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    };
+    fetch('http://192.168.186.12:9000/clock/enable', requestOptions)
+}
+
+const APIDisableClockMode = () => {
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    };
+    fetch('http://192.168.186.12:9000/clock/disable', requestOptions)
+}
+
 
 const ClockModeToggle = () => {
-    const [enabled, setEnabled] = React.useState(true); // default value is true
+    const [enabled, setEnabled] = React.useState(false); 
     const toggle = () => {
         setEnabled(!enabled);
+        if (!enabled) {
+            APIEnableClockMode();
+        } else {
+            APIDisableClockMode();
+        }
+
         console.log(enabled);
     };
+    
+    React.useEffect(() => {
+        (async () => {
+              try{
+                  
+                  const response = await fetch ("http://192.168.186.12:9000/clock/isenabled");
+                  const responseJson = await response.json();
+                  setEnabled(responseJson.clock_mode)
+              } catch (error) {
+                  console.log(error);
+              }
+        })();
+      }, []);
 
   return (
     <div className="flex justify-center px-4 py-4">
