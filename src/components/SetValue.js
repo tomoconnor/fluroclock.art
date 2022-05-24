@@ -23,7 +23,7 @@ const SetValue = (props) => {
                     value: e.target.value
                 })
             };
-            fetch('http://192.168.186.12:9000/panel/numeric', requestOptions)
+            fetch('https://controller.fluroclock.art/api/panel/numeric', requestOptions)
             
         } else {
             props.panel(e.target.value);
@@ -37,7 +37,7 @@ const SetValue = (props) => {
                     alpha: e.target.value
                 })
             };
-            fetch('http://192.168.186.12:9000/panel/alpha', requestOptions)
+            fetch('https://controller.fluroclock.art/api/panel/alpha', requestOptions)
         }
     }
     return (

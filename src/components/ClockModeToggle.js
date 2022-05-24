@@ -6,7 +6,7 @@ const APIEnableClockMode = () => {
             'Content-Type': 'application/json',
         },
     };
-    fetch('http://192.168.186.12:9000/clock/enable', requestOptions)
+    fetch('https://controller.fluroclock.art/api/clock/enable', requestOptions)
 }
 
 const APIDisableClockMode = () => {
@@ -16,7 +16,7 @@ const APIDisableClockMode = () => {
             'Content-Type': 'application/json',
         },
     };
-    fetch('http://192.168.186.12:9000/clock/disable', requestOptions)
+    fetch('https://controller.fluroclock.art/api/clock/disable', requestOptions)
 }
 
 
@@ -38,7 +38,7 @@ const ClockModeToggle = () => {
           const interval = setInterval(async () => {
               try{
                   
-                const response = await fetch ("http://192.168.186.12:9000/clock/isenabled");
+                const response = await fetch ("https://controller.fluroclock.art/api/clock/isenabled");
                 const responseJson = await response.json();
                 console.log("ClockModeToggle: " + responseJson.clock_mode);
                 setEnabled(responseJson.clock_mode)

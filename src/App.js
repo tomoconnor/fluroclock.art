@@ -53,7 +53,7 @@ const App = () => {
       const interval = setInterval(async () => {
           try{
               
-              const response = await fetch ("http://192.168.186.12:9000/panel/status");
+              const response = await fetch ("https://controller.fluroclock.art/api/panel/status");
               const responseJson = await response.json();
               setPanelData(responseJson);
           } catch (error) {
