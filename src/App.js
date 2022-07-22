@@ -74,15 +74,15 @@ const App = () => {
         <hr />
         <h2 className='ml-10 py-2'>Display State</h2>
         <div className="grid grid-cols-4">
-          <div className="col-span-1"><Display value={panelA} /></div>
-          <div className="col-span-1"><Display value={panelB} /></div>
-          <div className="col-span-1"><Display value={panelC} /></div>
           <div className="col-span-1"><Display value={panelD} /></div>
+          <div className="col-span-1"><Display value={panelC} /></div>
+          <div className="col-span-1"><Display value={panelB} /></div>
+          <div className="col-span-1"><Display value={panelA} /></div>
 
-          <div className="col-span-1"><SetValue panel={setPanelA} panelID={4}/></div>
-          <div className="col-span-1"><SetValue panel={setPanelB} panelID={3}/></div>
-          <div className="col-span-1"><SetValue panel={setPanelC} panelID={2}/></div>
-          <div className="col-span-1"><SetValue panel={setPanelD} panelID={1}/></div>
+          <div className="col-span-1"><SetValue panel={setPanelD} panelID={4}/></div>
+          <div className="col-span-1"><SetValue panel={setPanelC} panelID={3}/></div>
+          <div className="col-span-1"><SetValue panel={setPanelB} panelID={2}/></div>
+          <div className="col-span-1"><SetValue panel={setPanelA} panelID={1}/></div>
           </div>
       </div>
     </div>
